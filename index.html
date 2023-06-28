@@ -83,7 +83,11 @@
         <input type="range" oninput="calculateTip(); updateTipPercentageDisplay();" onchange="calculateTip(); updateTipPercentageDisplay();" id="tipPercentage">
         <label for="numOfPerson">Количество человек: <span id="numOfPersonDisplay">1</span></label>
         <input type="range" oninput="calculateTip(); updateNumOfPersonDisplay();" onchange="calculateTip(); updateNumOfPersonDisplay();" id="numOfPerson">
-        <div class="result" id="result"></div>
+        <div class="result" id="result">
+            <h5><span>Чаевые</span><span>0.00</span></h5>
+            <h5><span>Итоговая сумма</span><span>0.00</span></h5>
+            <h5><span>Сумма на человека</span><span>0.00</span></h5>
+        </div>
     </div>
 
     <script>
