@@ -79,10 +79,10 @@
     <div class="calculator">
         <label for="totalBill">Счет</label>
         <input type="number" oninput="calculateTip()" onchange="calculateTip()" id="totalBill" placeholder="Введите сумму счета">
-        <label for="tipPercentage">Процент чаевых</label>
-        <input type="range" oninput="calculateTip()" onchange="calculateTip()" id="tipPercentage">
-        <label for="numOfPerson">Количество человек</label>
-        <input type="range" oninput="calculateTip()" onchange="calculateTip()" id="numOfPerson">
+        <label for="tipPercentage">Процент чаевых: <span id="tipPercentageDisplay">0%</span></label>
+        <input type="range" oninput="calculateTip(); updateTipPercentageDisplay();" onchange="calculateTip(); updateTipPercentageDisplay();" id="tipPercentage">
+        <label for="numOfPerson">Количество человек: <span id="numOfPersonDisplay">1</span></label>
+        <input type="range" oninput="calculateTip(); updateNumOfPersonDisplay();" onchange="calculateTip(); updateNumOfPersonDisplay();" id="numOfPerson">
         <div class="result" id="result"></div>
     </div>
 
@@ -99,6 +99,16 @@
                 <h5><span>Итоговая сумма</span><span>${totalBill.toFixed(2)}</span></h5>
                 <h5><span>Сумма на человека</span><span>${perPersonPay.toFixed(2)}</span></h5>
             `;
+        }
+
+        const updateTipPercentageDisplay = () => {
+            let tipPercentage = document.getElementById("tipPercentage").value;
+            document.getElementById("tipPercentageDisplay").textContent = `${tipPercentage}%`;
+        }
+
+        const updateNumOfPersonDisplay = () => {
+            let numOfPerson = document.getElementById("numOfPerson").value;
+            document.getElementById("numOfPersonDisplay").textContent = numOfPerson;
         }
     </script>
 </body>
