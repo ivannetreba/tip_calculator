@@ -93,7 +93,7 @@
     <script>
         const validateBill = () => {
             let bill = document.getElementById("totalBill").value;
-            if (bill < 100 || bill > 1000000) {
+            if (bill < 0 || bill > 1000000) {
                 alert("Сумма счета должна быть от 100 до 1 000 000");
                 document.getElementById("totalBill").value = "";
             }
