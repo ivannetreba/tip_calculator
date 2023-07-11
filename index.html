@@ -78,7 +78,7 @@
 <body>
     <div class="calculator">
         <label for="totalBill">Счет</label>
-        <input type="number" oninput="calculateTip()" onchange="calculateTip()" id="totalBill" placeholder="Введите сумму счета">
+        <input type="number" min="100" max="1000000" step="0.01" oninput="validateBill(); calculateTip();" onchange="validateBill(); calculateTip();" id="totalBill" placeholder="Введите сумму счета">
         <label for="tipPercentage">Процент чаевых: <span id="tipPercentageDisplay">0%</span></label>
         <input type="range" oninput="calculateTip(); updateTipPercentageDisplay();" onchange="calculateTip(); updateTipPercentageDisplay();" id="tipPercentage">
         <label for="numOfPerson">Количество человек: <span id="numOfPersonDisplay">1</span></label>
@@ -91,8 +91,19 @@
     </div>
 
     <script>
+        const validateBill = () => {
+            let bill = document.getElementById("totalBill").value;
+            if (bill < 100 || bill > 1000000) {
+                alert("Сумма счета должна быть от 100 до 1 000 000");
+                document.getElementById("totalBill").value = "";
+            }
+        }
+
         const calculateTip = () => {
             let bill = Number(document.getElementById("totalBill").value);
+            if (bill === 0) {
+                return;
+            }
             let numOfPerson = Number(document.getElementById("numOfPerson").value);
             let tipPercentage = Number(document.getElementById("tipPercentage").value);
             let tip = bill * (tipPercentage / 100);
